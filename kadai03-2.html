@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <title>課題03-2</title>
+</head>
+<body>
+    <h1>70点以上の科目：</h1>
+    <h2>{% for i, t in sub.items() %}
+            {% if t >= 70 %}
+                {{i}}
+            {% endif %}
+        {% endfor %}
+    </h2>
+</body>
+</html>
