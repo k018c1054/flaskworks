@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+  {% if name != '' and email != '' %}
+  <h1>{{name}} : {{email}}を受け取りました</h1>
+  {% else %}
+  <h1>入力エラー</h1>
+  {% endif %}  
+</body>
+</html>
