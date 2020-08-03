@@ -12,7 +12,7 @@ def index():
  step = request.form.get('step')
  if step is not None:
    steps.append((date, step))
-  return render_template('kadai5-2.html', steps = steps)
+  return render_template('kadai5-2.html', steps=steps)
 
 if __name__=='__main__':
   app.debug = True
