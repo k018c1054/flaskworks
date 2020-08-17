@@ -5,13 +5,13 @@ app = Flask(__name__)
 
 steps = []
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
- dt = datetime.datetime.now()
- date = dt.strftime("%m/%d %H:%M")
- step = request.form.get('step')
- if step is not None:
-   steps.append((date, step))
+  dt = datetime.datetime.now()
+  date = dt.strftime("%m/%d %H:%M")
+  step = request.form.get('step')
+  if step is not None:
+    steps.append((date, step))
   return render_template('kadai5-2.html', steps=steps)
 
 if __name__=='__main__':
