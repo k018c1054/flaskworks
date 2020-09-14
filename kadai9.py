@@ -20,7 +20,7 @@ def allowed_file(filename):
 @app.route('/')
 def index():
   conn = db.connect(**db_param)
-  cur = conn.consor()
+  cur = conn.cursor()
   stmt = 'SELECT * FROM list'
   cur.execute(stmt)
   rows = cur.fetchall()
@@ -46,7 +46,7 @@ def send():
   cur.execute(stmt, (title,))
   rows = cur.fetchall()
   if len(rows)==0:
-    cur.execute('INSERT INTO list(title, price, imagez) VALUES(%s, %s, %s)', (title, int(price), image.filename))
+    cur.execute('INSERT INTO list(title, price, image) VALUES(%s, %s, %s)', (title, int(price), image.filename))
   else:
     cur.execute('UPDATE list SET price=%s, image=%s WHERE title=%s', (int(price), image.filename, title))
   conn.commit()
@@ -71,7 +71,7 @@ def delete():
   conn.close()
   return redirect('/')
 
-@app.route('/date', methods=['GET'])
+@app.route('/data', methods=['GET'])
 def data():
   keyword = request.args.get('keyword')
   conn = db.connect(**db_param)
@@ -83,7 +83,7 @@ def data():
     stmt = 'SELECT * FROM list'
     cur.execute(stmt)
   rows = cur.fetchall()
-  url = 'https://127.0.0.1*5000/static/uploads/'
+  url = 'http://127.0.0.1:5000/static/uploads/'
   data = []
   for id, title, price, image in rows:
     data.append({ 'id':id, 'title':title, 'price':price, 'image':url+image})

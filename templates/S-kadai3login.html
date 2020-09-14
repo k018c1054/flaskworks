@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>最終課題3</title>
+</head>
+
+<body>
+    <h1>{{name}}のToDoリスト</h1>
+    <a href="/logout">ログアウト</a>
+    <hr>
+    <form action="/send" method="post">
+        <label for="title">追加項目：</label>
+        <input type="text" name="title" id="title">
+        <input type="submit" value="送信">
+    </form>
+    
+    <hr>
+    <form action="/delete" method="post">
+        <input type="submit" value="削除"><br />
+        <table>
+            <tr>
+                <th></th>
+                <th>日付</th>
+                <th>タイトル</th>
+            </tr>
+            {% for (id, date, title, user) in list %}
+            <tr>
+                <td><input type="checkbox" name="del_list" value="{{id}}"></td>
+                <td>{{date}}</td>
+                <td>{{title}}</td>
+                <td><input type="hidden" value="{{user}}"></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</body>
+
+</html>

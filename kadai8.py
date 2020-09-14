@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
   conn = db.connect(**db_param)
-  cur = conn.consor()
+  cur = conn.cursor()
   stmt = 'SELECT * FROM books'
   cur.execute(stmt)
   rows = cur.fetchall()
